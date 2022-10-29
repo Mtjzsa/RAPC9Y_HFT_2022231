@@ -19,11 +19,11 @@ namespace RAPC9Y_HFT_2022231.Models
         [Required]
         public string LaneName { get; set; }
 
-        public virtual ICollection<Champions> ChampionByLanes { get; set; }
+        public virtual ICollection<Champions> ChampionsByLanes { get; set; }
 
         public Lanes()
         {
-            this.ChampionByLanes = new HashSet<Champions>();
+            this.ChampionsByLanes = new HashSet<Champions>();
         }
     }
 }
