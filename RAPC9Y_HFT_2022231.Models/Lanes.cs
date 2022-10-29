@@ -25,5 +25,12 @@ namespace RAPC9Y_HFT_2022231.Models
         {
             this.ChampionsByLanes = new HashSet<Champions>();
         }
+
+        public Lanes(string entity)
+        {
+            string[] split = entity.Split('#');
+            Id = int.Parse(split[0]);
+            LaneName = split[1];
+        }
     }
 }

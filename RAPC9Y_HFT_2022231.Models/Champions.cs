@@ -38,5 +38,18 @@ namespace RAPC9Y_HFT_2022231.Models
         public virtual Regions Region { get; set; }
 
         public int Release { get; set; }
+
+        public Champions(string entity)
+        {
+            string[] split = entity.Split('#');
+            Id = int.Parse(split[0]);
+            Name = split[1];
+            Gender = split[2];
+            LaneId = int.Parse(split[3]);
+            Species = split[4];
+            Resources = split[5];
+            RegionId = int.Parse(split[6]);
+            Release = int.Parse(split[7]);
+        }
     }
 }
