@@ -23,7 +23,7 @@ namespace RAPC9Y_HFT_2022231.Models
 
         public Lanes()
         {
-            this.ChampionsByLanes = new HashSet<Champions>();
+            ChampionsByLanes = new HashSet<Champions>();
         }
 
         public Lanes(string entity)

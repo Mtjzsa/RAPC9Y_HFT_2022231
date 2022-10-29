@@ -18,12 +18,12 @@ namespace RAPC9Y_HFT_2022231.Repository
 
         public LoLDbContext()
         {
-            this.Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
-        public LoLDbContext(DbContextOptions<LoLDbContext> options):base(options)
+        public LoLDbContext(DbContextOptions<LoLDbContext> options) : base(options)
         {
-            this.Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

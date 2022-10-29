@@ -39,6 +39,10 @@ namespace RAPC9Y_HFT_2022231.Models
 
         public int Release { get; set; }
 
+        public Champions()
+        {
+
+        }
         public Champions(string entity)
         {
             string[] split = entity.Split('#');

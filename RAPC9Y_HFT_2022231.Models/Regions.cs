@@ -22,7 +22,7 @@ namespace RAPC9Y_HFT_2022231.Models
 
         public Regions()
         {
-            this.ChampionsByRegions = new HashSet<Champions>();
+           ChampionsByRegions = new HashSet<Champions>();
         }
 
         public Regions(string entity)
