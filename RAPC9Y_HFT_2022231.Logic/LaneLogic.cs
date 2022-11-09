@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace RAPC9Y_HFT_2022231.Logic
 {
-    public class ChampionLogic : IChampionLogic
+    public class LaneLogic : ILaneLogic
     {
-        IRepository<Champions> repo;
+        IRepository<Lanes> repo;
 
-        public ChampionLogic(IRepository<Champions> repo)
+        public LaneLogic(IRepository<Lanes> repo)
         {
             this.repo = repo;
         }
 
-        public void Create(Champions item)
+        public void Create(Lanes item)
         {
             this.repo.Create(item);
         }
@@ -27,31 +27,29 @@ namespace RAPC9Y_HFT_2022231.Logic
             this.repo.Delete(id);
         }
 
-        public Champions Read(int id)
+        public Lanes Read(int id)
         {
-            var champ = this.repo.Read(id);
-            if (champ == null)
+            var lane = this.repo.Read(id);
+            if (lane == null)
             {
-                throw new ArgumentException("There is no such champion!");
+                throw new ArgumentException("There is no such lane!");
             }
-            return champ;
+            return lane;
         }
 
-        public IQueryable<Champions> ReadAll()
+        public IQueryable<Lanes> ReadAll()
         {
             return this.repo.ReadAll();
         }
 
-        public void Update(Champions item)
+        public void Update(Lanes item)
         {
             this.repo.Update(item);
         }
 
-        //public IEnumerable<Champions> ChampByRegions()
-        //{
-            
-        //}
-
-        
+        public void ChampionsByLanes()
+        {
+                
+        }
     }
 }

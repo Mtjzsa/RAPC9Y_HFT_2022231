@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace RAPC9Y_HFT_2022231.Logic
 {
-    public class ChampionLogic : IChampionLogic
+    public class RegionLogic
     {
-        IRepository<Champions> repo;
+        IRepository<Regions> repo;
 
-        public ChampionLogic(IRepository<Champions> repo)
+        public RegionLogic(IRepository<Regions> repo)
         {
             this.repo = repo;
         }
 
-        public void Create(Champions item)
+        public void Create(Regions item)
         {
             this.repo.Create(item);
         }
@@ -27,31 +27,24 @@ namespace RAPC9Y_HFT_2022231.Logic
             this.repo.Delete(id);
         }
 
-        public Champions Read(int id)
+        public Regions Read(int id)
         {
-            var champ = this.repo.Read(id);
-            if (champ == null)
+            var r = this.repo.Read(id);
+            if (r == null)
             {
-                throw new ArgumentException("There is no such champion!");
+                throw new ArgumentException("There is no such region!");
             }
-            return champ;
+            return r;
         }
 
-        public IQueryable<Champions> ReadAll()
+        public IQueryable<Regions> ReadAll()
         {
             return this.repo.ReadAll();
         }
 
-        public void Update(Champions item)
+        public void Update(Regions item)
         {
             this.repo.Update(item);
         }
-
-        //public IEnumerable<Champions> ChampByRegions()
-        //{
-            
-        //}
-
-        
     }
 }
