@@ -1,4 +1,5 @@
-﻿using RAPC9Y_HFT_2022231.Models;
+﻿using RAPC9Y_HFT_2022231.Logic;
+using RAPC9Y_HFT_2022231.Models;
 using RAPC9Y_HFT_2022231.Repository;
 using System;
 using System.Collections.Generic;
@@ -19,17 +20,17 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public void Create(Lanes item)
         {
-            this.repo.Create(item);
+            repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            this.repo.Delete(id);
+            repo.Delete(id);
         }
 
         public Lanes Read(int id)
         {
-            var lane = this.repo.Read(id);
+            var lane = repo.Read(id);
             if (lane == null)
             {
                 throw new ArgumentException("There is no such lane!");
@@ -39,12 +40,12 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public IQueryable<Lanes> ReadAll()
         {
-            return this.repo.ReadAll();
+            return repo.ReadAll();
         }
 
         public void Update(Lanes item)
         {
-            this.repo.Update(item);
+            repo.Update(item);
         }
     }
 }

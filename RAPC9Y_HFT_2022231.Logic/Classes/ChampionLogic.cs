@@ -1,4 +1,5 @@
 ﻿using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using RAPC9Y_HFT_2022231.Logic;
 using RAPC9Y_HFT_2022231.Models;
 using RAPC9Y_HFT_2022231.Repository;
 using System;
@@ -23,17 +24,17 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public void Create(Champions item)
         {
-            this.repo.Create(item);
+            repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            this.repo.Delete(id);
+            repo.Delete(id);
         }
 
         public Champions Read(int id)
         {
-            var champ = this.repo.Read(id);
+            var champ = repo.Read(id);
             if (champ == null)
             {
                 throw new ArgumentException("There is no such champion!");
@@ -43,12 +44,12 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public IQueryable<Champions> ReadAll()
         {
-            return this.repo.ReadAll();
+            return repo.ReadAll();
         }
 
         public void Update(Champions item)
         {
-            this.repo.Update(item);
+            repo.Update(item);
         }
 
         public IEnumerable<Champions> ManalessChampionsAfter2010()
@@ -123,14 +124,14 @@ namespace RAPC9Y_HFT_2022231.Logic
                 }
                 else
                 {
-                    return this.Region == b.Region
-                        && this.Number == b.Number;
+                    return Region == b.Region
+                        && Number == b.Number;
                 }
             }
 
             public override int GetHashCode()
             {
-                return HashCode.Combine(this.Region, this.Number);
+                return HashCode.Combine(Region, Number);
             }
         }
     }
