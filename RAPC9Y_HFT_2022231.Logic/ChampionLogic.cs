@@ -51,6 +51,18 @@ namespace RAPC9Y_HFT_2022231.Logic
             this.repo.Update(item);
         }
 
-      
+        public IEnumerable<Champions> ManalessChampionsAfter2010()
+        {
+            return from x in repo.ReadAll()
+                   where x.Release > 2010 && x.Resources == "Manaless"
+                   orderby x.Species
+                   select new Champions()
+                   {
+                       Name = x.Name,
+                       Release = x.Release,
+                       Species = x.Species,
+                   };
+        }
+
     }
 }

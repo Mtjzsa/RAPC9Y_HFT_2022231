@@ -57,5 +57,33 @@ namespace RAPC9Y_HFT_2022231.Test
             RegionLogic = new RegionLogic(mockRegionRepo.Object);
         }
 
+        [Test]
+        public void ManalessChampionsAfter2010Test()
+        {
+            var result = ChampLogic.ManalessChampionsAfter2010().ToList();
+            var expected = new List<Champions>()
+            {
+                new Champions()
+                {
+                    Name="C",
+                    Release=2019,
+                    Species="Darkin",
+                },
+                new Champions()
+                {
+                    Name="A",
+                    Release=2016,
+                    Species="Human",
+                },
+                new Champions()
+                {
+                    Name="B",
+                    Release=2018,
+                    Species="Yordle",
+                },
+            };
+            Assert.AreEqual(result, expected);
+        }
+
     }
 }
