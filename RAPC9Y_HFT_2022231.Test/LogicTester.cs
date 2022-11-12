@@ -103,5 +103,23 @@ namespace RAPC9Y_HFT_2022231.Test
             Assert.AreEqual(result, expected);
         }
 
+        [Test]
+        public void SupportsWithOtherGenderTest()
+        {
+            var result = ChampLogic.SupportsWithOtherGender();
+            var expected = new List<Champions>()
+            {
+                new Champions()
+                {
+                    Name = "A",
+                },
+                new Champions()
+                {
+                    Name = "C",
+                },
+            };
+            Assert.AreEqual(result, expected);
+        }
+
     }
 }

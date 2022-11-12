@@ -73,5 +73,15 @@ namespace RAPC9Y_HFT_2022231.Logic
                        Name = x.Name
                    };
         }
+
+        public IEnumerable<Champions> SupportsWithOtherGender()
+        {
+            return from x in repo.ReadAll()
+                   where x.Gender == "Other" && x.LaneId == 5
+                   select new Champions()
+                   {
+                       Name = x.Name,
+                   };
+        }
     }
 }
