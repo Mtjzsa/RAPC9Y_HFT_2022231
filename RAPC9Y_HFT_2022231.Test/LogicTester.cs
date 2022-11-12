@@ -121,5 +121,25 @@ namespace RAPC9Y_HFT_2022231.Test
             Assert.AreEqual(result, expected);
         }
 
+        [Test]
+        public void TopChampionsOrderByReleaseTest()
+        {
+            var result = ChampLogic.TopChampionsOrderByRelease();
+            var expected = new List<Champions>()
+            {
+                new Champions()
+                {
+                    Name="E",
+                    Release=2010
+                },
+                new Champions()
+                {
+                    Name="D",
+                    Release=2017
+                },
+            };
+            Assert.AreEqual(result, expected);
+        }
+
     }
 }

@@ -83,5 +83,17 @@ namespace RAPC9Y_HFT_2022231.Logic
                        Name = x.Name,
                    };
         }
+
+        public IEnumerable<Champions> TopChampionsOrderByRelease()
+        {
+            return from x in repo.ReadAll()
+                   where x.LaneId == 1
+                   orderby x.Release
+                   select new Champions()
+                   {
+                       Name = x.Name,
+                       Release = x.Release,
+                   };
+        }
     }
 }
