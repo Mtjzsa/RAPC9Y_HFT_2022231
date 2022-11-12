@@ -54,7 +54,7 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public IEnumerable<Champions> ManalessChampionsAfter2010()
         {
-            return from x in repo.ReadAll()
+            return from x in this.repo.ReadAll()
                    where x.Release > 2010 && x.Resources == "Manaless"
                    orderby x.Species
                    select new Champions()
@@ -67,7 +67,7 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public IEnumerable<Champions> FemaleDemacianChamps()
         {
-            return from x in repo.ReadAll()
+            return from x in this.repo.ReadAll()
                    where x.Gender == "Female" && x.RegionId == 3
                    select new Champions()
                    {
@@ -77,7 +77,7 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public IEnumerable<Champions> SupportsWithOtherGender()
         {
-            return from x in repo.ReadAll()
+            return from x in this.repo.ReadAll()
                    where x.Gender == "Other" && x.LaneId == 5
                    select new Champions()
                    {
@@ -87,7 +87,7 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public IEnumerable<Champions> TopChampionsOrderByRelease()
         {
-            return from x in repo.ReadAll()
+            return from x in this.repo.ReadAll()
                    where x.LaneId == 1
                    orderby x.Release
                    select new Champions()
@@ -99,7 +99,7 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public IEnumerable<ChampionInfo> ChampionsByRegionAfter2016()
         {
-            return from x in repo.ReadAll()
+            return from x in this.repo.ReadAll()
                    where x.Release > 2016
                    group x by x.RegionId into g
                    select new ChampionInfo()
