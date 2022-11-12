@@ -64,5 +64,14 @@ namespace RAPC9Y_HFT_2022231.Logic
                    };
         }
 
+        public IEnumerable<Champions> FemaleDemacianChamps()
+        {
+            return from x in repo.ReadAll()
+                   where x.Gender == "Female" && x.RegionId == 3
+                   select new Champions()
+                   {
+                       Name = x.Name
+                   };
+        }
     }
 }

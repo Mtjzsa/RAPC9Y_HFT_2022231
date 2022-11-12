@@ -85,5 +85,23 @@ namespace RAPC9Y_HFT_2022231.Test
             Assert.AreEqual(result, expected);
         }
 
+        [Test]
+        public void FemaleDemacianChampsTest()
+        {
+            var result = ChampLogic.FemaleDemacianChamps();
+            var expected = new List<Champions>()
+            {
+                new Champions()
+                {
+                    Name = "D",
+                },
+                new Champions()
+                {
+                    Name = "E",
+                },
+            };
+            Assert.AreEqual(result, expected);
+        }
+
     }
 }
