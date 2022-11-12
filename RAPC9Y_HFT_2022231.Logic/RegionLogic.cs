@@ -1,4 +1,5 @@
-﻿using RAPC9Y_HFT_2022231.Models;
+﻿using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using RAPC9Y_HFT_2022231.Models;
 using RAPC9Y_HFT_2022231.Repository;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RAPC9Y_HFT_2022231.Logic
 {
-    public class RegionLogic
+    public class RegionLogic : IRegionLogic
     {
         IRepository<Regions> repo;
 

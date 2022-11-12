@@ -1,10 +1,14 @@
-﻿using RAPC9Y_HFT_2022231.Models;
+﻿using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using RAPC9Y_HFT_2022231.Models;
 using RAPC9Y_HFT_2022231.Repository;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace RAPC9Y_HFT_2022231.Logic
 {
@@ -47,11 +51,6 @@ namespace RAPC9Y_HFT_2022231.Logic
             this.repo.Update(item);
         }
 
-        //public IEnumerable<Champions> ChampByRegions()
-        //{
-            
-        //}
-
-        
+      
     }
 }

@@ -46,10 +46,5 @@ namespace RAPC9Y_HFT_2022231.Logic
         {
             this.repo.Update(item);
         }
-
-        public void ChampionsByLanes()
-        {
-                
-        }
     }
 }
