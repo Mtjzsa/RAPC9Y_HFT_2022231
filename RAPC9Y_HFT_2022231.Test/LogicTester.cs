@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static RAPC9Y_HFT_2022231.Logic.ChampionLogic;
 
 namespace RAPC9Y_HFT_2022231.Test
 {
@@ -139,6 +140,27 @@ namespace RAPC9Y_HFT_2022231.Test
                 },
             };
             Assert.AreEqual(result, expected);
+        }
+
+        [Test]
+        public void ChampionsByRegionAfter2016Test()
+        {
+            var result = ChampLogic.ChampionsByRegionAfter2016().ToList();
+            var expected = new List<ChampionInfo>()
+            {
+
+                new ChampionInfo()
+                {
+                    Region = 2,
+                    Number = 2
+                },
+                new ChampionInfo()
+                {
+                    Region = 3,
+                    Number = 1
+                },
+            };
+            Assert.AreEqual(expected, result);
         }
 
     }

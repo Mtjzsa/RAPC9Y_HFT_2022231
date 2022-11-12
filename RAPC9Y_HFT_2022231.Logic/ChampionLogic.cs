@@ -95,5 +95,43 @@ namespace RAPC9Y_HFT_2022231.Logic
                        Release = x.Release,
                    };
         }
+
+        public IEnumerable<ChampionInfo> ChampionsByRegionAfter2016()
+        {
+            return from x in repo.ReadAll()
+                   where x.Release > 2016
+                   group x by x.RegionId into g
+                   select new ChampionInfo()
+                   {
+                       Region = g.Key,
+                       Number = g.Count()
+                   };
+        }
+
+        public class ChampionInfo
+        {
+            public int Region { get; set; }
+
+            public int Number { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                ChampionInfo b = obj as ChampionInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.Region == b.Region
+                        && this.Number == b.Number;
+                }
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.Region, this.Number);
+            }
+        }
     }
 }
