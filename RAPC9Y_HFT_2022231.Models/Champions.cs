@@ -55,5 +55,25 @@ namespace RAPC9Y_HFT_2022231.Models
             RegionId = int.Parse(split[6]);
             Release = int.Parse(split[7]);
         }
+
+        public override bool Equals(object obj)
+        {
+            Champions b = obj as Champions;
+            if (b == null)
+            {
+                return false;
+            }
+            else
+            {
+                return this.Id ==b.Id && this.Name == b.Name && this.Gender ==b.Gender && this.LaneId==b.LaneId && this.Lane==Lane &&
+                    this.Species == b.Species && this.Resources==b.Resources && this.RegionId==b.RegionId && this.Region==b.Region
+                    && this.Release == b.Release;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.Id, this.Name, this.Gender, this.LaneId,this.Species, this.Resources, this.RegionId, this.Release);
+        }
     }
 }
