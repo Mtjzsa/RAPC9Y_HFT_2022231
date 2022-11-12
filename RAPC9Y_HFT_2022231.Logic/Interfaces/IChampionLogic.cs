@@ -1,5 +1,7 @@
 ﻿using RAPC9Y_HFT_2022231.Models;
+using System.Collections.Generic;
 using System.Linq;
+using static RAPC9Y_HFT_2022231.Logic.ChampionLogic;
 
 namespace RAPC9Y_HFT_2022231.Logic
 {
@@ -10,5 +12,10 @@ namespace RAPC9Y_HFT_2022231.Logic
         Champions Read(int id);
         IQueryable<Champions> ReadAll();
         void Update(Champions item);
+        IEnumerable<Champions> ManalessChampionsAfter2010();
+        IEnumerable<Champions> FemaleDemacianChamps();
+        IEnumerable<Champions> SupportsWithOtherGender();
+        IEnumerable<Champions> TopChampionsOrderByRelease();
+        IEnumerable<ChampionInfo> ChampionsByRegionAfter2016();
     }
 }
