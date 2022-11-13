@@ -22,14 +22,14 @@ namespace RAPC9Y_HFT_2022231.Models
 
         public Regions()
         {
-           ChampionsByRegions = new HashSet<Champions>();
+           this.ChampionsByRegions = new HashSet<Champions>();
         }
 
-        public Regions(string entity)
-        {
-            string[] split = entity.Split('#');
-            Id = int.Parse(split[0]);
-            RegionName = split[1];
-        }
+        //public Regions(string entity)
+        //{
+        //    string[] split = entity.Split('#');
+        //    Id = int.Parse(split[0]);
+        //    RegionName = split[1];
+        //}
     }
 }

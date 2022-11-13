@@ -23,14 +23,14 @@ namespace RAPC9Y_HFT_2022231.Models
 
         public Lanes()
         {
-            ChampionsByLanes = new HashSet<Champions>();
+            this.ChampionsByLanes = new HashSet<Champions>();
         }
 
-        public Lanes(string entity)
-        {
-            string[] split = entity.Split('#');
-            Id = int.Parse(split[0]);
-            LaneName = split[1];
-        }
+        //public Lanes(string entity)
+        //{
+        //    string[] split = entity.Split('#');
+        //    Id = int.Parse(split[0]);
+        //    LaneName = split[1];
+        //}
     }
 }

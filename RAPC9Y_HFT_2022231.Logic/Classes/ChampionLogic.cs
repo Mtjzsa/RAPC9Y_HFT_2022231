@@ -52,10 +52,10 @@ namespace RAPC9Y_HFT_2022231.Logic
             repo.Update(item);
         }
 
-        public IEnumerable<Champions> ManalessChampionsAfter2010()
+        public IEnumerable<Champions> IonianEnergyChampionsAfter2010()
         {
             return from x in this.repo.ReadAll()
-                   where x.Release > 2010 && x.Resources == "Manaless"
+                   where x.Release > 2010 && x.Resources == "Energy" &&  x.Region.RegionName=="Ionia"
                    orderby x.Species
                    select new Champions()
                    {

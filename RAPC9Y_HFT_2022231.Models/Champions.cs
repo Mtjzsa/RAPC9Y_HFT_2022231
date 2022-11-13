@@ -43,18 +43,18 @@ namespace RAPC9Y_HFT_2022231.Models
         {
 
         }
-        public Champions(string entity)
-        {
-            string[] split = entity.Split('#');
-            Id = int.Parse(split[0]);
-            Name = split[1];
-            Gender = split[2];
-            LaneId = int.Parse(split[3]);
-            Species = split[4];
-            Resources = split[5];
-            RegionId = int.Parse(split[6]);
-            Release = int.Parse(split[7]);
-        }
+        //public Champions(string entity)
+        //{
+        //    string[] split = entity.Split('#');
+        //    Id = int.Parse(split[0]);
+        //    Name = split[1];
+        //    Gender = split[2];
+        //    LaneId = int.Parse(split[3]);
+        //    Species = split[4];
+        //    Resources = split[5];
+        //    RegionId = int.Parse(split[6]);
+        //    Release = int.Parse(split[7]);
+        //}
 
         public override bool Equals(object obj)
         {
@@ -65,8 +65,8 @@ namespace RAPC9Y_HFT_2022231.Models
             }
             else
             {
-                return this.Id ==b.Id && this.Name == b.Name && this.Gender ==b.Gender && this.LaneId==b.LaneId && this.Lane==Lane &&
-                    this.Species == b.Species && this.Resources==b.Resources && this.RegionId==b.RegionId && this.Region==b.Region
+                return this.Id ==b.Id && this.Name == b.Name && this.Gender ==b.Gender && this.LaneId==b.LaneId &&
+                    this.Species == b.Species && this.Resources==b.Resources && this.RegionId==b.RegionId
                     && this.Release == b.Release;
             }
         }

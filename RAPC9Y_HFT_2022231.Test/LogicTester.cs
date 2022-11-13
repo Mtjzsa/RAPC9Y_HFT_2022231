@@ -28,11 +28,11 @@ namespace RAPC9Y_HFT_2022231.Test
             mockChampRepo = new Mock<IRepository<Champions>>();
             mockChampRepo.Setup(m => m.ReadAll()).Returns(new List<Champions>()
             {
-                new Champions("1#A#Other#5#Human#Manaless#1#2016"),
-                new Champions("2#B#Female#5#Yordle#Manaless#2#2018"),
-                new Champions("3#C#Other#5#Darkin#Manaless#2#2019"),
-                new Champions("4#D#Female#1#Human#Mana#3#2017"),
-                new Champions("5#E#Female#1#Human#Manaless#3#2010"),
+                new Champions(){ Id=1,Name="A",Gender="",LaneId=1,Species="",Resources="",RegionId=8,Release=2013},
+                new Champions(){ Id=2,Name="B",Gender="",LaneId=1,Species="",Resources="",RegionId=8,Release=2013},
+                new Champions(){ Id=3,Name="C",Gender="",LaneId=1,Species="",Resources="",RegionId=8,Release=2013},
+                new Champions(){ Id=4,Name="D",Gender="",LaneId=1,Species="",Resources="",RegionId=8,Release=2013},
+                new Champions(){ Id=5,Name="E",Gender="",LaneId=1,Species="",Resources="",RegionId=8,Release=2013},
 
 
             }.AsQueryable());
@@ -41,9 +41,9 @@ namespace RAPC9Y_HFT_2022231.Test
             mockLaneRepo = new Mock<IRepository<Lanes>>();
             mockLaneRepo.Setup(m => m.ReadAll()).Returns(new List<Lanes>()
             {
-                new Lanes("1#A"),
-                new Lanes("5#B"),
-                new Lanes("3#C"),
+                new Lanes(){ Id=1, LaneName="A"},
+                new Lanes(){ Id=2, LaneName="B"},
+                new Lanes(){ Id=3, LaneName="C"},
 
             }.AsQueryable());
             LaneLogic = new LaneLogic(mockLaneRepo.Object);
@@ -51,17 +51,17 @@ namespace RAPC9Y_HFT_2022231.Test
             mockRegionRepo = new Mock<IRepository<Regions>>();
             mockRegionRepo.Setup(t => t.ReadAll()).Returns(new List<Regions>()
             {
-                new Regions("1#A"),
-                new Regions("2#B"),
-                new Regions("3#C"),
+                new Regions(){ Id=1, RegionName="Bandle-City"},
+                new Regions(){ Id=4, RegionName="Ionia"},
+                new Regions(){ Id=3, RegionName="Demacia"},
             }.AsQueryable());
             RegionLogic = new RegionLogic(mockRegionRepo.Object);
         }
 
         [Test]
-        public void ManalessChampionsAfter2010Test()
+        public void IonianEnergyChampionsAfter2010Test()
         {
-            var result = ChampLogic.ManalessChampionsAfter2010().ToList();
+            var result = ChampLogic.IonianEnergyChampionsAfter2010().ToList();
             var expected = new List<Champions>()
             {
                 new Champions()

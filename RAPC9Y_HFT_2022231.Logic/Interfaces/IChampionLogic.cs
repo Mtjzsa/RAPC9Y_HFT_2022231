@@ -12,7 +12,7 @@ namespace RAPC9Y_HFT_2022231.Logic
         Champions Read(int id);
         IQueryable<Champions> ReadAll();
         void Update(Champions item);
-        IEnumerable<Champions> ManalessChampionsAfter2010();
+        IEnumerable<Champions> IonianEnergyChampionsAfter2010();
         IEnumerable<Champions> FemaleDemacianChamps();
         IEnumerable<Champions> SupportsWithOtherGender();
         IEnumerable<Champions> TopChampionsOrderByRelease();
