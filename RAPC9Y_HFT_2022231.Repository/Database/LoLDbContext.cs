@@ -19,7 +19,7 @@ namespace RAPC9Y_HFT_2022231.Repository
 
         public LoLDbContext()
         {
-            Database.EnsureCreated();
+            this.Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -77,7 +77,7 @@ namespace RAPC9Y_HFT_2022231.Repository
                 new Champions(){ Id=27,Name="Ekko",Gender="Male",LaneId=3,Species="Human",Resources="Mana",RegionId=14,Release=2015},
                 new Champions(){ Id=28,Name="Elise",Gender="Female",LaneId=2,Species="Magically Altered",Resources="Mana",RegionId=9,Release=2012},
                 new Champions(){ Id=29,Name="Evelynn",Gender="Female",LaneId=2,Species="Demon",Resources="Mana",RegionId=8,Release=2009},
-                new Champions(){ Id=31,Name="Ezreal",Gender="Male",LaneId=4,Species="Human",Resources="mana",RegionId=7,Release=2010},
+                new Champions(){ Id=30,Name="Ezreal",Gender="Male",LaneId=4,Species="Human",Resources="mana",RegionId=7,Release=2010},
                 new Champions(){ Id=31,Name="Fiddlesticks",Gender="Other",LaneId=2,Species="Demon",Resources="Mana",RegionId=8,Release=2009},
                 new Champions(){ Id=32,Name="Fiora",Gender="Female",LaneId=1,Species="Human",Resources="Mana",RegionId=3,Release=2012},
                 new Champions(){ Id=33,Name="Fizz",Gender="Male",LaneId=3,Species="Yordle",Resources="Mana",RegionId=2,Release=2011},
@@ -94,7 +94,7 @@ namespace RAPC9Y_HFT_2022231.Repository
                 new Champions(){ Id=44,Name="Irelia",Gender="Female",LaneId=1,Species="Human",Resources="Mana",RegionId=4,Release=2010},
                 new Champions(){ Id=45,Name="IV.Jarvan",Gender="Male",LaneId=2,Species="Human",Resources="Mana",RegionId=3,Release=2011},
                 new Champions(){ Id=46,Name="Ivern",Gender="Male",LaneId=2,Species="Magically Altered",Resources="Mana",RegionId=4,Release=2016},
-                new Champions(){ Id=17,Name="Janna",Gender="Female",LaneId=5,Species="God",Resources="Mana",RegionId=10,Release=2009},
+                new Champions(){ Id=47,Name="Janna",Gender="Female",LaneId=5,Species="God",Resources="Mana",RegionId=10,Release=2009},
                 new Champions(){ Id=48,Name="Jax",Gender="Male",LaneId=1,Species="Unknown",Resources="Mana",RegionId=8,Release=2009},
                 new Champions(){ Id=49,Name="Jayce",Gender="Male",LaneId=1,Species="Human",Resources="Mana",RegionId=7,Release=2012},
                 new Champions(){ Id=50,Name="Jhin",Gender="Male",LaneId=4,Species="Human",Resources="Mana",RegionId=4,Release=2016},
@@ -110,7 +110,7 @@ namespace RAPC9Y_HFT_2022231.Repository
                 new Champions(){ Id=60,Name="Kennen",Gender="Male",LaneId=1,Species="Yordle",Resources="Energy",RegionId=4,Release=2010},
                 new Champions(){ Id=61,Name="Kha'Zix",Gender="Male",LaneId=2,Species="Void-Being",Resources="Mana",RegionId=13,Release=2012},
                 new Champions(){ Id=62,Name="Kindred",Gender="Other",LaneId=2,Species="God",Resources="Mana",RegionId=8,Release=2015},
-                new Champions(){ Id=62,Name="Kled",Gender="Male",LaneId=1,Species="Yordle",Resources="Courage",RegionId=6,Release=2016},
+                new Champions(){ Id=63,Name="Kled",Gender="Male",LaneId=1,Species="Yordle",Resources="Courage",RegionId=6,Release=2016},
                 new Champions(){ Id=64,Name="Kog'Maw",Gender="Male",LaneId=4,Species="Void-Being",Resources="Mana",RegionId=13,Release=2010},
                 new Champions(){ Id=65,Name="LeBlanc",Gender="Femlae",LaneId=3,Species="Magically Altered",Resources="Mana",RegionId=6,Release=2010},
                 new Champions(){ Id=66,Name="Lee Sin",Gender="Male",LaneId=2,Species="Human",Resources="Energy",RegionId=4,Release=2011},
@@ -180,7 +180,7 @@ namespace RAPC9Y_HFT_2022231.Repository
                 new Champions(){ Id=130,Name="Trundle",Gender="Male",LaneId=2,Species="Troll",Resources="Mana",RegionId=12,Release=2010},
                 new Champions(){ Id=131,Name="Tryndamere",Gender="Male",LaneId=1,Species="Magically Altered",Resources="Fury",RegionId=12,Release=2009},
                 new Champions(){ Id=132,Name="Twisted Fate",Gender="Male",LaneId=3,Species="Human",Resources="Mana",RegionId=2,Release=2009},
-                new Champions(){ Id=131,Name="Twitch",Gender="Male",LaneId=4,Species="Chemically Altered",Resources="Mana",RegionId=14,Release=2009},
+                new Champions(){ Id=133,Name="Twitch",Gender="Male",LaneId=4,Species="Chemically Altered",Resources="Mana",RegionId=14,Release=2009},
                 new Champions(){ Id=134,Name="Udyr",Gender="Male",LaneId=1,Species="Vastayan",Resources="Mana",RegionId=12,Release=2009},
                 new Champions(){ Id=135,Name="Urgot",Gender="Male",LaneId=1,Species="Chemically Altered",Resources="Mana",RegionId=6,Release=2010},
                 new Champions(){ Id=136,Name="Varus",Gender="Male",LaneId=4,Species="Darkin",Resources="Mana",RegionId=8,Release=2012},
@@ -208,7 +208,7 @@ namespace RAPC9Y_HFT_2022231.Repository
                 new Champions(){ Id=158,Name="Ziggs",Gender="Male",LaneId=3,Species="Yordle",Resources="Mana",RegionId=7,Release=2012},
                 new Champions(){ Id=159,Name="Zilean",Gender="Male",LaneId=5,Species="Human",Resources="Mana",RegionId=8,Release=2009},
                 new Champions(){ Id=160,Name="Zoe",Gender="Female",LaneId=3,Species="Human",Resources="Mana",RegionId=11,Release=2017},
-                new Champions(){ Id=161,Name="Zyra",Gender="Female",LaneId=5,Species="Unknown",Resources="Mana",RegionId=5,Release=2012},
+                new Champions(){ Id=161,Name="Zyra",Gender="Other",LaneId=5,Species="Unknown",Resources="Mana",RegionId=5,Release=2012},
             });
 
             modelBuilder.Entity<Lanes>().HasData(new Lanes[]

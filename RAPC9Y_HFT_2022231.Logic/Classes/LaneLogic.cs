@@ -38,7 +38,7 @@ namespace RAPC9Y_HFT_2022231.Logic
             return lane;
         }
 
-        public IQueryable<Lanes> ReadAll()
+        public IEnumerable<Lanes> ReadAll()
         {
             return repo.ReadAll();
         }

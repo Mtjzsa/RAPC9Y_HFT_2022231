@@ -32,10 +32,10 @@ namespace RAPC9Y_HFT_2022231.Models
         public int RegionId { get; set; }
 
         [NotMapped]
-        public virtual Lanes Lane { get; private set; }
+        public virtual Lanes Lane { get;  set; }
 
         [NotMapped]
-        public virtual Regions Region { get; private set; }
+        public virtual Regions Region { get;  set; }
 
         public int Release { get; set; }
 

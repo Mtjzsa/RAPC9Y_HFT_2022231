@@ -39,7 +39,7 @@ namespace RAPC9Y_HFT_2022231.Logic
             return r;
         }
 
-        public IQueryable<Regions> ReadAll()
+        public IEnumerable<Regions> ReadAll()
         {
             return repo.ReadAll();
         }

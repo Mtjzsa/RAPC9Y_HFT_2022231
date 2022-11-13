@@ -10,7 +10,7 @@ namespace RAPC9Y_HFT_2022231.Logic
         void Create(Champions item);
         void Delete(int id);
         Champions Read(int id);
-        IQueryable<Champions> ReadAll();
+        IEnumerable<Champions> ReadAll();
         void Update(Champions item);
         IEnumerable<Champions> IonianEnergyChampionsAfter2010();
         IEnumerable<Champions> FemaleDemacianChamps();

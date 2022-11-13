@@ -42,7 +42,7 @@ namespace RAPC9Y_HFT_2022231.Logic
             return champ;
         }
 
-        public IQueryable<Champions> ReadAll()
+        public IEnumerable<Champions> ReadAll()
         {
             return repo.ReadAll();
         }
@@ -52,32 +52,23 @@ namespace RAPC9Y_HFT_2022231.Logic
             repo.Update(item);
         }
 
-        //public IEnumerable<Champions> IonianEnergyChampionsAfter2010()
-        //{
-        //    return from x in this.repo.ReadAll()
-        //           where x.Release > 2010 && !x.Resources.Equals("Mana") &&  x.Region.RegionName.Equals("Ionia")
-        //           orderby x.Species
-        //           select new Champions()
-        //           {
-        //               Name = x.Name,
-        //               Release = x.Release,
-        //               Species = x.Species,
-        //           };
-        //}
-
-        public IEnumerable<KeyValuePair<string, int>> IonianEnergyChampionsAfter2010()
+        public IEnumerable<Champions> IonianEnergyChampionsAfter2010()
         {
             return from x in this.repo.ReadAll()
                    where x.Release > 2010 && !x.Resources.Equals("Mana") && x.Region.RegionName.Equals("Ionia")
-                   group x by x.Region.RegionName into g
-                   select new KeyValuePair<string, int>
-                   (g.Key, g.Count());
+                   orderby x.Species
+                   select new Champions()
+                   {
+                       Name = x.Name,
+                       Release = x.Release,
+                       Species = x.Species,
+                   };
         }
 
         public IEnumerable<Champions> FemaleDemacianChamps()
         {
             return from x in this.repo.ReadAll()
-                   where x.Gender == "Female" && x.RegionId == 3
+                   where x.Gender == "Female" && x.Region.RegionName.Equals("Demacia")
                    select new Champions()
                    {
                        Name = x.Name
@@ -87,7 +78,7 @@ namespace RAPC9Y_HFT_2022231.Logic
         public IEnumerable<Champions> SupportsWithOtherGender()
         {
             return from x in this.repo.ReadAll()
-                   where x.Gender == "Other" && x.LaneId == 5
+                   where x.Gender == "Other" && x.Lane.LaneName == "Support"
                    select new Champions()
                    {
                        Name = x.Name,
@@ -97,7 +88,7 @@ namespace RAPC9Y_HFT_2022231.Logic
         public IEnumerable<Champions> TopChampionsOrderByRelease()
         {
             return from x in this.repo.ReadAll()
-                   where x.LaneId == 1
+                   where x.Lane.LaneName.Equals("Top")
                    orderby x.Release
                    select new Champions()
                    {
@@ -112,7 +103,7 @@ namespace RAPC9Y_HFT_2022231.Logic
                    group x by x.Region.RegionName into g
                    select new ChampionInfo()
                    {
-                       Region = g.Key,
+                       Region = g.Key.ToString(),
                        Year = g.Average(t=>t.Release),
                        Number = g.Count()
                    };
@@ -134,14 +125,15 @@ namespace RAPC9Y_HFT_2022231.Logic
                 }
                 else
                 {
-                    return Region == b.Region
-                        && Number == b.Number;
+                    return this.Region == b.Region
+                        && this.Year ==b.Year
+                        && this.Number == b.Number;
                 }
             }
 
             public override int GetHashCode()
             {
-                return HashCode.Combine(Region, Number);
+                return HashCode.Combine(this.Region, this.Year, this.Number);
             }
         }
     }
