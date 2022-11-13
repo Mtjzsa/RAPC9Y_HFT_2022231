@@ -141,9 +141,6 @@ namespace RAPC9Y_HFT_2022231.Test
             //    new Regions(){ Id=3, RegionName="Demacia"},
             //}.AsQueryable());
             //RegionLogic = new RegionLogic(mockRegionRepo.Object);
-
-
-           
         }
 
         [Test]
@@ -253,5 +250,65 @@ namespace RAPC9Y_HFT_2022231.Test
             Assert.AreEqual(expected, result);
         }
 
+        [Test]
+        public void CreateChampCorrectlyTest()
+        {
+            var champ = new Champions() { Name = "Máté" };
+            
+            ChampLogic.Create(champ);
+
+            mockChampRepo.Verify(t => t.Create(champ), Times.Once);
+        }
+
+        [Test]
+        public void CreateMovieIncorrectlyTest()
+        {
+            var champ = new Champions() { Name = "AB" };
+            try
+            {
+                ChampLogic.Create(champ);
+            }
+            catch
+            { 
+            }
+            mockChampRepo.Verify(t => t.Create(champ), Times.Never);
+        }
+
+        [Test]
+        public void CreateMovieWithNameNullTest()
+        {
+            var champ = new Champions();
+            try
+            {
+                ChampLogic.Create(champ);
+            }
+            catch
+            {
+            }
+            Assert.That(() => ChampLogic.Create(champ), Throws.TypeOf<NullReferenceException>());
+        }
+
+        [Test]
+        public void DeleteTest()
+        {
+            ChampLogic.Delete(1);
+            mockChampRepo.Verify(t=>t.Delete(It.IsAny<int>()), Times.Once);
+        }
+
+        [Test]
+        public void ReadWithCorrectIdTest()
+        {
+            Champions expected = new Champions()
+            {
+                Id = 20,
+                Name = "asfawq"
+            };
+
+            mockChampRepo.Setup(t => t.Read(20)).Returns(expected);
+
+            var result = ChampLogic.Read(20);
+
+            Assert.AreEqual(expected, result);
+        }
     }
 }
