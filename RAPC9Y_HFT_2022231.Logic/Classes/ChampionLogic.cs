@@ -24,6 +24,10 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public void Create(Champions item)
         {
+            if (item.Name.Length<3)
+            {
+                throw new ArgumentException("Name can't be that short...");
+            }
             repo.Create(item);
         }
 
