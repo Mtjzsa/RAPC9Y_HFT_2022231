@@ -21,21 +21,21 @@ namespace RAPC9Y_HFT_2022231.Models
 
         public string Gender { get; set; }
 
-        [ForeignKey(nameof(Lane))]
-        public int LaneId { get; set; }
-        
-        [NotMapped]
-        public virtual Lanes Lane { get; set; }
-
         public string Species { get; set; }
 
         public string Resources { get; set; }
+
+        [ForeignKey(nameof(Lane))]
+        public int LaneId { get; set; }
 
         [ForeignKey(nameof(Region))]
         public int RegionId { get; set; }
 
         [NotMapped]
-        public virtual Regions Region { get; set; }
+        public virtual Lanes Lane { get; private set; }
+
+        [NotMapped]
+        public virtual Regions Region { get; private set; }
 
         public int Release { get; set; }
 
@@ -65,8 +65,15 @@ namespace RAPC9Y_HFT_2022231.Models
             }
             else
             {
-                return this.Id ==b.Id && this.Name == b.Name && this.Gender ==b.Gender && this.LaneId==b.LaneId &&
-                    this.Species == b.Species && this.Resources==b.Resources && this.RegionId==b.RegionId
+                return this.Id ==b.Id 
+                    && this.Name == b.Name 
+                    && this.Gender ==b.Gender 
+                    && this.LaneId==b.LaneId 
+                    && this.Lane==b.Lane
+                    && this.Species == b.Species 
+                    && this.Resources==b.Resources 
+                    && this.RegionId==b.RegionId
+                    && this.Region==b.Region
                     && this.Release == b.Release;
             }
         }

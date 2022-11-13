@@ -18,6 +18,7 @@ namespace RAPC9Y_HFT_2022231.Models
         [Required]
         public string RegionName { get; set; }
 
+        [NotMapped]
         public virtual ICollection<Champions> ChampionsByRegions { get; set; }
 
         public Regions()

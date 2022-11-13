@@ -19,6 +19,7 @@ namespace RAPC9Y_HFT_2022231.Models
         [Required]
         public string LaneName { get; set; }
 
+        [NotMapped]
         public virtual ICollection<Champions> ChampionsByLanes { get; set; }
 
         public Lanes()

@@ -52,17 +52,26 @@ namespace RAPC9Y_HFT_2022231.Logic
             repo.Update(item);
         }
 
-        public IEnumerable<Champions> IonianEnergyChampionsAfter2010()
+        //public IEnumerable<Champions> IonianEnergyChampionsAfter2010()
+        //{
+        //    return from x in this.repo.ReadAll()
+        //           where x.Release > 2010 && !x.Resources.Equals("Mana") &&  x.Region.RegionName.Equals("Ionia")
+        //           orderby x.Species
+        //           select new Champions()
+        //           {
+        //               Name = x.Name,
+        //               Release = x.Release,
+        //               Species = x.Species,
+        //           };
+        //}
+
+        public IEnumerable<KeyValuePair<string, int>> IonianEnergyChampionsAfter2010()
         {
             return from x in this.repo.ReadAll()
-                   where x.Release > 2010 && x.Resources == "Energy" &&  x.Region.RegionName=="Ionia"
-                   orderby x.Species
-                   select new Champions()
-                   {
-                       Name = x.Name,
-                       Release = x.Release,
-                       Species = x.Species,
-                   };
+                   where x.Release > 2010 && !x.Resources.Equals("Mana") && x.Region.RegionName.Equals("Ionia")
+                   group x by x.Region.RegionName into g
+                   select new KeyValuePair<string, int>
+                   (g.Key, g.Count());
         }
 
         public IEnumerable<Champions> FemaleDemacianChamps()
@@ -97,21 +106,22 @@ namespace RAPC9Y_HFT_2022231.Logic
                    };
         }
 
-        public IEnumerable<ChampionInfo> ChampionsByRegionAfter2016()
+        public IEnumerable<ChampionInfo> ChampionsByRegion()
         {
             return from x in this.repo.ReadAll()
-                   where x.Release > 2016
-                   group x by x.RegionId into g
+                   group x by x.Region.RegionName into g
                    select new ChampionInfo()
                    {
                        Region = g.Key,
+                       Year = g.Average(t=>t.Release),
                        Number = g.Count()
                    };
         }
 
         public class ChampionInfo
         {
-            public int Region { get; set; }
+            public string Region { get; set; }
+            public double Year { get; set; }
 
             public int Number { get; set; }
 

@@ -22,11 +22,6 @@ namespace RAPC9Y_HFT_2022231.Repository
             Database.EnsureCreated();
         }
 
-        public LoLDbContext(DbContextOptions<LoLDbContext> options) : base(options)
-        {
-            Database.EnsureCreated();
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -39,17 +34,17 @@ namespace RAPC9Y_HFT_2022231.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Champions>(champs => champs
-            .HasOne(champs => champs.Lane)
-            .WithMany(lane => lane.ChampionsByLanes)
-            .HasForeignKey(champs => champs.LaneId)
-            .OnDelete(DeleteBehavior.Cascade));
+            modelBuilder.Entity<Champions>()
+                .HasOne(t=>t.Region)
+                .WithMany(t=>t.ChampionsByRegions)
+                .HasForeignKey(t=>t.RegionId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Champions>(champs => champs
-            .HasOne(champs => champs.Region)
-            .WithMany(regions => regions.ChampionsByRegions)
-            .HasForeignKey(champs => champs.RegionId)
-            .OnDelete(DeleteBehavior.Cascade));
+            modelBuilder.Entity<Champions>()
+                .HasOne(t => t.Lane)
+                .WithMany(t => t.ChampionsByLanes)
+                .HasForeignKey(t => t.LaneId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Champions>().HasData(new Champions[]
             {

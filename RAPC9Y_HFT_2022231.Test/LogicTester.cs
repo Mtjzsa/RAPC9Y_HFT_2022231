@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Resources;
+using Moq;
 using NUnit.Framework;
 using RAPC9Y_HFT_2022231.Logic;
 using RAPC9Y_HFT_2022231.Models;
@@ -6,8 +7,11 @@ using RAPC9Y_HFT_2022231.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.Internal.AsyncLock;
+using System.Xml.Linq;
 using static RAPC9Y_HFT_2022231.Logic.ChampionLogic;
 
 namespace RAPC9Y_HFT_2022231.Test
@@ -28,11 +32,12 @@ namespace RAPC9Y_HFT_2022231.Test
             mockChampRepo = new Mock<IRepository<Champions>>();
             mockChampRepo.Setup(m => m.ReadAll()).Returns(new List<Champions>()
             {
-                new Champions(){ Id=1,Name="A",Gender="",LaneId=1,Species="",Resources="",RegionId=8,Release=2013},
-                new Champions(){ Id=2,Name="B",Gender="",LaneId=1,Species="",Resources="",RegionId=8,Release=2013},
-                new Champions(){ Id=3,Name="C",Gender="",LaneId=1,Species="",Resources="",RegionId=8,Release=2013},
-                new Champions(){ Id=4,Name="D",Gender="",LaneId=1,Species="",Resources="",RegionId=8,Release=2013},
-                new Champions(){ Id=5,Name="E",Gender="",LaneId=1,Species="",Resources="",RegionId=8,Release=2013},
+                new Champions(){ Id=1,Name="A",Gender="",LaneId=1,Species="",Resources="Energy",RegionId=4,Release=2019},
+                new Champions(){ Id=2,Name="B",Gender="",LaneId=1,Species="",Resources="Mana",RegionId=4,Release=2016},
+                new Champions(){ Id=3,Name="C",Gender="",LaneId=1,Species="",Resources="Manaless",RegionId=4,Release=2013},
+                new Champions(){ Id=4,Name="D",Gender="Female",LaneId=1,Species="",Resources="Fury",RegionId=4,Release=2010},
+                new Champions(){ Id=5,Name="E",Gender="Other",LaneId=5,Species="",Resources="",RegionId=3,Release=2013},
+                new Champions(){ Id=6,Name="F",Gender="Other",LaneId=5,Species="",Resources="",RegionId=3,Release=2017},
 
 
             }.AsQueryable());
@@ -43,7 +48,7 @@ namespace RAPC9Y_HFT_2022231.Test
             {
                 new Lanes(){ Id=1, LaneName="A"},
                 new Lanes(){ Id=2, LaneName="B"},
-                new Lanes(){ Id=3, LaneName="C"},
+                new Lanes(){ Id=5, LaneName="C"},
 
             }.AsQueryable());
             LaneLogic = new LaneLogic(mockLaneRepo.Object);
@@ -61,7 +66,7 @@ namespace RAPC9Y_HFT_2022231.Test
         [Test]
         public void IonianEnergyChampionsAfter2010Test()
         {
-            var result = ChampLogic.IonianEnergyChampionsAfter2010().ToList();
+            var result = ChampLogic.IonianEnergyChampionsAfter2010();
             var expected = new List<Champions>()
             {
                 new Champions()
@@ -83,7 +88,11 @@ namespace RAPC9Y_HFT_2022231.Test
                     Species="Yordle",
                 },
             };
-            Assert.AreEqual(result, expected);
+            var exp = new List<KeyValuePair<string, int>>()
+            {
+                new KeyValuePair<string, int>("Ionia", 2),
+            };
+            Assert.AreEqual(result, exp);
         }
 
         [Test]
@@ -143,21 +152,23 @@ namespace RAPC9Y_HFT_2022231.Test
         }
 
         [Test]
-        public void ChampionsByRegionAfter2016Test()
+        public void ChampionsByRegionTest()
         {
-            var result = ChampLogic.ChampionsByRegionAfter2016().ToList();
+            var result = ChampLogic.ChampionsByRegion().ToList();
             var expected = new List<ChampionInfo>()
             {
 
                 new ChampionInfo()
                 {
-                    Region = 2,
-                    Number = 2
+                    Region = "Demacia",
+                    Year=2014.5,
+                    Number = 4
                 },
                 new ChampionInfo()
                 {
-                    Region = 3,
-                    Number = 1
+                    Region = "Ionia",
+                    Year=15.0,
+                    Number = 2
                 },
             };
             Assert.AreEqual(expected, result);
