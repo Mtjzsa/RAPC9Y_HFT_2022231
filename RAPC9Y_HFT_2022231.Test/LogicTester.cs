@@ -17,15 +17,16 @@ namespace RAPC9Y_HFT_2022231.Test
     public class LogicTester
     {
         ChampionLogic ChampLogic;
-        //RegionLogic RegionLogic;
-        //LaneLogic LaneLogic;
+        RegionLogic RegionLogic;
+        LaneLogic LaneLogic;
         Mock<IRepository<Champions>> mockChampRepo;
-        //Mock<IRepository<Lanes>> mockLaneRepo;
-        //Mock<IRepository<Regions>> mockRegionRepo;
+        Mock<IRepository<Lanes>> mockLaneRepo;
+        Mock<IRepository<Regions>> mockRegionRepo;
 
         [SetUp]
         public void Init()
         {
+            
             Lanes Top = new Lanes()
             {
                 Id = 1,
@@ -36,7 +37,12 @@ namespace RAPC9Y_HFT_2022231.Test
                 Id = 5,
                 LaneName = "Support",
             };
-
+            var lanes = new List<Lanes>()
+            {
+                Top,
+                Support
+            }.AsQueryable();
+            
             Regions Demacia = new Regions()
             {
                 Id = 3,
@@ -47,6 +53,11 @@ namespace RAPC9Y_HFT_2022231.Test
                 Id = 4,
                 RegionName = "Ionia"
             };
+            var regions = new List<Regions>()
+            {
+                Demacia,
+                Ionia
+            }.AsQueryable();
 
             var champs = new List<Champions>()
             {
@@ -123,24 +134,13 @@ namespace RAPC9Y_HFT_2022231.Test
             mockChampRepo.Setup(m => m.ReadAll()).Returns(champs);
             ChampLogic = new ChampionLogic(mockChampRepo.Object);
 
-            //mockLaneRepo = new Mock<IRepository<Lanes>>();
-            //mockLaneRepo.Setup(m => m.ReadAll()).Returns(new List<Lanes>()
-            //{
-            //    new Lanes(){ Id=1, LaneName="A"},
-            //    new Lanes(){ Id=2, LaneName="B"},
-            //    new Lanes(){ Id=5, LaneName="C"},
+            mockLaneRepo = new Mock<IRepository<Lanes>>();
+            mockLaneRepo.Setup(m => m.ReadAll()).Returns(lanes);
+            LaneLogic = new LaneLogic(mockLaneRepo.Object);
 
-            //}.AsQueryable());
-            //LaneLogic = new LaneLogic(mockLaneRepo.Object);
-
-            //mockRegionRepo = new Mock<IRepository<Regions>>();
-            //mockRegionRepo.Setup(t => t.ReadAll()).Returns(new List<Regions>()
-            //{
-            //    new Regions(){ Id=1, RegionName="Bandle-City"},
-            //    new Regions(){ Id=4, RegionName="Ionia"},
-            //    new Regions(){ Id=3, RegionName="Demacia"},
-            //}.AsQueryable());
-            //RegionLogic = new RegionLogic(mockRegionRepo.Object);
+            mockRegionRepo = new Mock<IRepository<Regions>>();
+            mockRegionRepo.Setup(t => t.ReadAll()).Returns(regions);
+            RegionLogic = new RegionLogic(mockRegionRepo.Object);
         }
 
         [Test]
