@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using static RAPC9Y_HFT_2022231.Logic.ChampionLogic;
 
-namespace RAPC9Y_HFT_2022231.Endpoint.Controllers
+namespace RAPC9Y_HFT_2022231.Endpoint
 {
     [Route("api/[controller]/[action]")]
     [ApiController]

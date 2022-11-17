@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace RAPC9Y_HFT_2022231.Models
 {
@@ -19,6 +20,7 @@ namespace RAPC9Y_HFT_2022231.Models
         [Required]
         public string LaneName { get; set; }
 
+        [JsonIgnore]
         [NotMapped]
         public virtual ICollection<Champions> ChampionsByLanes { get; set; }
 
