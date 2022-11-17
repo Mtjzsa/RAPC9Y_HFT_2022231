@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RAPC9Y_HFT_2022231.Models
@@ -30,10 +31,12 @@ namespace RAPC9Y_HFT_2022231.Models
 
         [ForeignKey(nameof(Region))]
         public int RegionId { get; set; }
-
+        
+        [JsonIgnore]
         [NotMapped]
         public virtual Lanes Lane { get;  set; }
-
+        
+        [JsonIgnore]
         [NotMapped]
         public virtual Regions Region { get;  set; }
 

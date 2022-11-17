@@ -77,7 +77,7 @@ namespace RAPC9Y_HFT_2022231.Repository
                 new Champions(){ Id=27,Name="Ekko",Gender="Male",LaneId=3,Species="Human",Resources="Mana",RegionId=14,Release=2015},
                 new Champions(){ Id=28,Name="Elise",Gender="Female",LaneId=2,Species="Magically Altered",Resources="Mana",RegionId=9,Release=2012},
                 new Champions(){ Id=29,Name="Evelynn",Gender="Female",LaneId=2,Species="Demon",Resources="Mana",RegionId=8,Release=2009},
-                new Champions(){ Id=30,Name="Ezreal",Gender="Male",LaneId=4,Species="Human",Resources="mana",RegionId=7,Release=2010},
+                new Champions(){ Id=30,Name="Ezreal",Gender="Male",LaneId=4,Species="Human",Resources="Mana",RegionId=7,Release=2010},
                 new Champions(){ Id=31,Name="Fiddlesticks",Gender="Other",LaneId=2,Species="Demon",Resources="Mana",RegionId=8,Release=2009},
                 new Champions(){ Id=32,Name="Fiora",Gender="Female",LaneId=1,Species="Human",Resources="Mana",RegionId=3,Release=2012},
                 new Champions(){ Id=33,Name="Fizz",Gender="Male",LaneId=3,Species="Yordle",Resources="Mana",RegionId=2,Release=2011},

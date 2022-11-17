@@ -35,7 +35,7 @@ namespace RAPC9Y_HFT_2022231.Test
             Lanes Support = new Lanes()
             {
                 Id = 5,
-                LaneName = "Support",
+                LaneName = "Support",                
             };
             var lanes = new List<Lanes>()
             {
@@ -146,7 +146,7 @@ namespace RAPC9Y_HFT_2022231.Test
         [Test]
         public void IonianEnergyChampionsAfter2010Test()
         {
-            var result = ChampLogic.IonianEnergyChampionsAfter2010();
+            var result = ChampLogic.IonianChampionsWithoutManaAfter2010();
             var expected = new List<Champions>()
             {
 

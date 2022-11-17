@@ -56,7 +56,7 @@ namespace RAPC9Y_HFT_2022231.Logic
             repo.Update(item);
         }
 
-        public IEnumerable<Champions> IonianEnergyChampionsAfter2010()
+        public IEnumerable<Champions> IonianChampionsWithoutManaAfter2010()
         {
             return from x in this.repo.ReadAll()
                    where x.Release > 2010 && !x.Resources.Equals("Mana") && x.Region.RegionName.Equals("Ionia")
