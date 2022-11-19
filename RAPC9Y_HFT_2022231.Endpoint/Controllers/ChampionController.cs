@@ -25,7 +25,7 @@ namespace RAPC9Y_HFT_2022231.Endpoint
             return this.logic.ReadAll();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public Champions Read(int id)
         {
             return this.logic.Read(id);
@@ -43,42 +43,13 @@ namespace RAPC9Y_HFT_2022231.Endpoint
             this.logic.Update(c);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public void Delete(int id)
         {
             this.logic.Delete(id);
         }
 
-        [HttpGet]
-        public IEnumerable<Champions> IonianChampionsWithoutManaAfter2010()
-        {
-            return this.logic.IonianChampionsWithoutManaAfter2010();
-        }
-
-        [HttpGet]
-        public IEnumerable<Champions> FemaleDemacianChampions()
-        {
-            return this.logic.FemaleDemacianChamps();
-        }
-
-        [HttpGet]
-        public IEnumerable<Champions> SupportWithOtehrGender()
-        {
-            return this.logic.SupportsWithOtherGender();
-        }
-
-        [HttpGet]
-        public IEnumerable<Champions> TopChampionsOrderByRelease()
-        {
-            return this.logic.TopChampionsOrderByRelease();
-        }
-
-        [HttpGet]
-        public IEnumerable<ChampionInfo> ChampionsByRegions()
-        {
-            return this.logic.ChampionsByRegion();
-        }
-
+        
 
     }
 }

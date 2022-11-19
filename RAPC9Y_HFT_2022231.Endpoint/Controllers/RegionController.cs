@@ -23,7 +23,7 @@ namespace RAPC9Y_HFT_2022231.Endpoint.Controllers
             return this.logic.ReadAll();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public Regions Read(int id)
         {
             return this.logic.Read(id);
@@ -41,7 +41,7 @@ namespace RAPC9Y_HFT_2022231.Endpoint.Controllers
             this.logic.Update(c);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public void Delete(int id)
         {
             this.logic.Delete(id);
