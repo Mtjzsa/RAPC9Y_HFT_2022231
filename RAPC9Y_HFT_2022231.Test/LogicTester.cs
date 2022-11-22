@@ -67,9 +67,11 @@ namespace RAPC9Y_HFT_2022231.Test
                     Name="A",
                     Gender="Other",
                     Lane=Top,
+                    LaneId=1,
                     Species="Human",
                     Resources="Energy",
                     Region=Ionia,
+                    RegionId=4,
                     Release=2017
                 },
                 new Champions()
@@ -78,9 +80,11 @@ namespace RAPC9Y_HFT_2022231.Test
                     Name="B",
                     Gender="Male",
                     Lane=Top,
+                    LaneId=1,
                     Species="Magically Altered",
                     Resources="Mana",
                     Region=Ionia,
+                    RegionId=4,
                     Release=2019
                 },
                 new Champions()
@@ -89,9 +93,11 @@ namespace RAPC9Y_HFT_2022231.Test
                     Name="C",
                     Gender="Female",
                     Lane=Top,
-                    Species="",
+                    LaneId=1,
+                    Species="Yordle",
                     Resources="Manaless",
                     Region=Demacia,
+                    RegionId=3,
                     Release=2013
                 },
                 new Champions()
@@ -100,9 +106,11 @@ namespace RAPC9Y_HFT_2022231.Test
                     Name="D",
                     Gender="Female",
                     Lane=Top,
-                    Species="",
+                    LaneId=1,
+                    Species="Vastayan",
                     Resources="Fury",
                     Region=Demacia,
+                    RegionId=3,
                     Release=2010
                 },
                 new Champions()
@@ -111,9 +119,11 @@ namespace RAPC9Y_HFT_2022231.Test
                     Name="E",
                     Gender="Other",
                     Lane=Support,
-                    Species="",
-                    Resources="",
+                    LaneId=5,
+                    Species="Chemically Altered",
+                    Resources="Mana",
                     Region=Demacia,
+                    RegionId=3,
                     Release=2016
                 },
                 new Champions()
@@ -122,9 +132,11 @@ namespace RAPC9Y_HFT_2022231.Test
                     Name="F",
                     Gender="Other",
                     Lane=Support,
-                    Species="",
-                    Resources="",
+                    LaneId=5,
+                    Species="Yordle",
+                    Resources="Rage",
                     Region=Demacia,
+                    RegionId=3,
                     Release=2017
                 },
 
@@ -144,7 +156,7 @@ namespace RAPC9Y_HFT_2022231.Test
         }
 
         [Test]
-        public void IonianEnergyChampionsAfter2010Test()
+        public void IonianChampionsWithoutManaAfter2010()
         {
             var result = ChampLogic.IonianChampionsWithoutManaAfter2010();
             var expected = new List<Champions>()
@@ -152,9 +164,14 @@ namespace RAPC9Y_HFT_2022231.Test
 
                 new Champions()
                 {
+                    Id=1,
                     Name="A",
-                    Release=2017,
+                    Gender ="Other",
                     Species="Human",
+                    Resources="Energy",
+                    LaneId=1,
+                    RegionId=4,
+                    Release=2017,
                 },
 
             };
@@ -169,11 +186,25 @@ namespace RAPC9Y_HFT_2022231.Test
             {
                 new Champions()
                 {
-                    Name = "C",
+                    Id=3,
+                    Name="C",
+                    Gender ="Female",
+                    Species="Yordle",
+                    Resources="Manaless",
+                    LaneId=1,
+                    RegionId=3,
+                    Release=2013,
                 },
                 new Champions()
                 {
-                    Name = "D",
+                    Id=4,
+                    Name="D",
+                    Gender ="Female",
+                    Species="Vastayan",
+                    Resources="Fury",
+                    LaneId=1,
+                    RegionId=3,
+                    Release=2010,
                 },
             };
             Assert.AreEqual(result, expected);
@@ -187,11 +218,25 @@ namespace RAPC9Y_HFT_2022231.Test
             {
                 new Champions()
                 {
-                    Name = "E",
+                    Id=5,
+                    Name="E",
+                    Gender ="Other",
+                    Species="Chemically Altered",
+                    Resources="Mana",
+                    LaneId=5,
+                    RegionId=3,
+                    Release=2016,
                 },
                 new Champions()
                 {
-                    Name = "F",
+                    Id=6,
+                    Name="F",
+                    Gender ="Other",
+                    Species="Yordle",
+                    Resources="Rage",
+                    LaneId=5,
+                    RegionId=3,
+                    Release=2017,
                 },
             };
             Assert.AreEqual(result, expected);
@@ -205,22 +250,46 @@ namespace RAPC9Y_HFT_2022231.Test
             {
                 new Champions()
                 {
+                    Id=4,
                     Name="D",
-                    Release=2010
+                    Gender ="Female",
+                    Species="Vastayan",
+                    Resources="Fury",
+                    LaneId=1,
+                    RegionId=3,
+                    Release=2010,
                 },
                 new Champions()
                 {
+                    Id=3,
                     Name="C",
-                    Release=2013
+                    Gender ="Female",
+                    Species="Yordle",
+                    Resources="Manaless",
+                    LaneId=1,
+                    RegionId=3,
+                    Release=2013,
                 },
                 new Champions()
                 {
+                    Id=1,
                     Name="A",
-                    Release=2017
+                    Gender ="Other",
+                    Species="Human",
+                    Resources="Energy",
+                    LaneId=1,
+                    RegionId=4,
+                    Release=2017,
                 },
                 new Champions()
                 {
+                    Id=2,
                     Name="B",
+                    Gender ="Male",
+                    Species="Magically Altered",
+                    Resources="Mana",
+                    LaneId=1,
+                    RegionId=4,
                     Release=2019
                 },
             };
@@ -261,7 +330,7 @@ namespace RAPC9Y_HFT_2022231.Test
         }
 
         [Test]
-        public void CreateMovieIncorrectlyTest()
+        public void CreateChampIncorrectlyTest()
         {
             var champ = new Champions() { Name = "AB" };
             try
@@ -275,7 +344,7 @@ namespace RAPC9Y_HFT_2022231.Test
         }
 
         [Test]
-        public void CreateMovieWithNameNullTest()
+        public void CreateChampWithNameNullTest()
         {
             var champ = new Champions();
             try

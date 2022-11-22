@@ -63,9 +63,14 @@ namespace RAPC9Y_HFT_2022231.Logic
                    orderby x.Species
                    select new Champions()
                    {
+                       Id = x.Id,
                        Name = x.Name,
-                       Release = x.Release,
+                       Gender = x.Gender,
                        Species = x.Species,
+                       Resources = x.Resources,
+                       LaneId = x.LaneId,
+                       RegionId = x.RegionId,
+                       Release = x.Release,
                    };
         }
 
@@ -75,7 +80,14 @@ namespace RAPC9Y_HFT_2022231.Logic
                    where x.Gender == "Female" && x.Region.RegionName.Equals("Demacia")
                    select new Champions()
                    {
-                       Name = x.Name
+                       Id = x.Id,
+                       Name = x.Name,
+                       Gender = x.Gender,
+                       Species = x.Species,
+                       Resources = x.Resources,
+                       LaneId = x.LaneId,
+                       RegionId = x.RegionId,
+                       Release = x.Release,
                    };
         }
 
@@ -85,7 +97,14 @@ namespace RAPC9Y_HFT_2022231.Logic
                    where x.Gender == "Other" && x.Lane.LaneName == "Support"
                    select new Champions()
                    {
+                       Id = x.Id,
                        Name = x.Name,
+                       Gender = x.Gender,
+                       Species = x.Species,
+                       Resources = x.Resources,
+                       LaneId = x.LaneId,
+                       RegionId = x.RegionId,
+                       Release = x.Release,
                    };
         }
 
@@ -96,7 +115,13 @@ namespace RAPC9Y_HFT_2022231.Logic
                    orderby x.Release
                    select new Champions()
                    {
+                       Id = x.Id,
                        Name = x.Name,
+                       Gender = x.Gender,
+                       Species = x.Species,
+                       Resources = x.Resources,
+                       LaneId = x.LaneId,
+                       RegionId = x.RegionId,
                        Release = x.Release,
                    };
         }
