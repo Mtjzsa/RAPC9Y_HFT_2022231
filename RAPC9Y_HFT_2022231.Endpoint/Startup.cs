@@ -43,7 +43,7 @@ namespace RAPC9Y_HFT_2022231.Endpoint
             {
                 t.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
-                    Title = "LeagueOfLegends.Database",
+                    Title = "RAPC9Y_HFT_202223.Endpoint",
                     Version = "v1",
                 });
             });
@@ -57,7 +57,7 @@ namespace RAPC9Y_HFT_2022231.Endpoint
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(t=>t.SwaggerEndpoint("/swagger/v1/swagger.json", "LeagueOfLegends.Database v1"));
+                app.UseSwaggerUI(t=>t.SwaggerEndpoint("/swagger/v1/swagger.json", "RAPC9Y_HFT_202223.Endpoint v1"));
             }
 
             app.UseRouting();

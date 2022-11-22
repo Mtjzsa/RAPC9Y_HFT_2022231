@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace RAPC9Y_HFT_2022231.Endpoint.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("[controller]")]
     [ApiController]
     public class LaneController : ControllerBase
     {

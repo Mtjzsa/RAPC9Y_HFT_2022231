@@ -8,7 +8,7 @@ using static RAPC9Y_HFT_2022231.Logic.ChampionLogic;
 
 namespace RAPC9Y_HFT_2022231.Endpoint
 {
-    [Route("api/[controller]/[action]")]
+    [Route("[controller]")]
     [ApiController]
     public class ChampionController : ControllerBase
     {

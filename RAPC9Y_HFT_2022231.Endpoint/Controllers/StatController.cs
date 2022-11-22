@@ -7,7 +7,7 @@ using RAPC9Y_HFT_2022231.Logic;
 
 namespace RAPC9Y_HFT_2022231.Endpoint.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class StatController : ControllerBase
     {
