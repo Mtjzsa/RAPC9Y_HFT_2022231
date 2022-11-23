@@ -115,6 +115,59 @@ namespace RAPC9Y_HFT_2022231.Client
                 rest.Delete(id, "region");
             }
         }
+        static void NonManaIonianChamps()
+        {
+            Console.WriteLine("NonMana Users From Ionia Released After 2010:");
+            List<Champions> list = rest.Get<Champions>("Stat/IonianChampionsWithoutManaAfter2010");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.Id+". "+item.Name+": "+item.Resources+", "+item.Release);
+            }
+            Console.ReadLine();
+        }
+        static void FemaleDemacian()
+        {
+            Console.WriteLine("Female Champs From Demacia:");
+            List<Champions> list = rest.Get<Champions>("Stat/FemaleDemacianChampions");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.Id+". "+item.Name);
+            }
+            Console.ReadLine();
+        }
+        static void OtherSupps()
+        {
+            Console.WriteLine("Support Champions With Other Gender:");
+            List<Champions> list = rest.Get<Champions>("Stat/SupportWithOtherGender");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.Id+". "+item.Name);
+            }
+            Console.ReadLine();
+        }
+        static void TopChamps()
+        {
+            Console.WriteLine("Top Champions Ordered By Release:");
+            List<Champions> list = rest.Get<Champions>("Stat/TopChampionsOrderByRelease");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.Id+". "+item.Name+", "+item.Release);
+            }
+            Console.ReadLine();
+        }
+        static void RegionInfo()
+        {
+            Console.WriteLine("Region infos:");
+            List<Regions.RegionInfo> list= rest.Get<Regions.RegionInfo>("Stat/RegionInfo");
+            foreach (var item in list)
+            {
+                Console.WriteLine("RegionName: "+item.Region);
+                Console.WriteLine("AverageRelease: "+item.Year);
+                Console.WriteLine("NumberOfChamps: "+item.Number);
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
         static void Main(string[] args)
         {
             rest = new RestService("http://localhost:39827/", "champion"); 
@@ -141,10 +194,19 @@ namespace RAPC9Y_HFT_2022231.Client
                 .Add("Update", () => Update("Regions"))
                 .Add("Exit", ConsoleMenu.Close);
 
+            var statSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("NonMana Users from Ionia After 2010", () => NonManaIonianChamps())
+                .Add("Female Champs From Demacia", () => FemaleDemacian())
+                .Add("Other Gender Supps", ()=>OtherSupps())
+                .Add("Top Champs Ordered By Release", () =>TopChamps())
+                .Add("All Regions Info", () =>RegionInfo())
+                .Add("Exit", ConsoleMenu.Close);
+
             var menu = new ConsoleMenu(args, level: 0)
                 .Add("Champions", () => championSubMenu.Show())
                 .Add("Lanes", () => laneSubMenu.Show())
                 .Add("Regions", () => regionSubMenu.Show())
+                .Add("Non-CRUDS", () => statSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
             
             menu.Show();
