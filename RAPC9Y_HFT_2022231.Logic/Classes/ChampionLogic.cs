@@ -28,17 +28,17 @@ namespace RAPC9Y_HFT_2022231.Logic
             {
                 throw new ArgumentException("Name can't be that short...");
             }
-            repo.Create(item);
+            this.repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            repo.Delete(id);
+            this.repo.Delete(id);
         }
 
         public Champions Read(int id)
         {
-            var champ = repo.Read(id);
+            var champ = this.repo.Read(id);
             if (champ == null)
             {
                 throw new ArgumentException("There is no such champion!");
@@ -48,12 +48,12 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public IEnumerable<Champions> ReadAll()
         {
-            return repo.ReadAll();
+            return this.repo.ReadAll();
         }
 
         public void Update(Champions item)
         {
-            repo.Update(item);
+            this.repo.Update(item);
         }
 
         public IEnumerable<Champions> IonianChampionsWithoutManaAfter2010()

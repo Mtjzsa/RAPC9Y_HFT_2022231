@@ -28,7 +28,7 @@ namespace RAPC9Y_HFT_2022231.Repository
             {
                 optionsBuilder
                         .UseLazyLoadingProxies()
-                        .UseInMemoryDatabase("LolDb");
+                        .UseInMemoryDatabase("champion");
             }
         }
 

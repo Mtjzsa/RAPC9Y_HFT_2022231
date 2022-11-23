@@ -20,17 +20,17 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public void Create(Lanes item)
         {
-            repo.Create(item);
+            this.repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            repo.Delete(id);
+            this.repo.Delete(id);
         }
 
         public Lanes Read(int id)
         {
-            var lane = repo.Read(id);
+            var lane = this.repo.Read(id);
             if (lane == null)
             {
                 throw new ArgumentException("There is no such lane!");
@@ -40,12 +40,12 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public IEnumerable<Lanes> ReadAll()
         {
-            return repo.ReadAll();
+            return this.repo.ReadAll();
         }
 
         public void Update(Lanes item)
         {
-            repo.Update(item);
+            this.repo.Update(item);
         }
     }
 }

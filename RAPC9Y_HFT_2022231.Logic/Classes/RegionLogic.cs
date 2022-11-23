@@ -21,17 +21,17 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public void Create(Regions item)
         {
-            repo.Create(item);
+            this.repo.Create(item);
         }
 
         public void Delete(int id)
         {
-            repo.Delete(id);
+            this.repo.Delete(id);
         }
 
         public Regions Read(int id)
         {
-            var r = repo.Read(id);
+            var r = this.repo.Read(id);
             if (r == null)
             {
                 throw new ArgumentException("There is no such region!");
@@ -41,12 +41,12 @@ namespace RAPC9Y_HFT_2022231.Logic
 
         public IEnumerable<Regions> ReadAll()
         {
-            return repo.ReadAll();
+            return this.repo.ReadAll();
         }
 
         public void Update(Regions item)
         {
-            repo.Update(item);
+            this.repo.Update(item);
         }
     }
 }
