@@ -32,7 +32,7 @@ namespace RAPC9Y_HFT_2022231.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Champions> SupportWithOtehrGender()
+        public IEnumerable<Champions> SupportWithOtherGender()
         {
             return this.logic.SupportsWithOtherGender();
         }
@@ -44,7 +44,7 @@ namespace RAPC9Y_HFT_2022231.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ChampionInfo> ChampionsByRegions()
+        public IEnumerable<Regions.RegionInfo> RegionInfo()
         {
             return this.logic.ChampionsByRegion();
         }

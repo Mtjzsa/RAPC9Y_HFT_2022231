@@ -300,20 +300,20 @@ namespace RAPC9Y_HFT_2022231.Test
         public void ChampionsByRegionTest()
         {
             var result = ChampLogic.ChampionsByRegion().ToList();
-            var expected = new List<ChampionInfo>()
+            var expected = new List<Regions.RegionInfo>()
             {
 
-                new ChampionInfo()
-                {
-                    Region = "Ionia",
-                    Year= 2018.00,
-                    Number = 2
-                },
-                new ChampionInfo()
+                new Regions.RegionInfo()
                 {
                     Region = "Demacia",
                     Year= 2014.00,
                     Number = 4
+                },
+                new Regions.RegionInfo()
+                {
+                    Region = "Ionia",
+                    Year= 2018.00,
+                    Number = 2
                 },
             };
             Assert.AreEqual(expected, result);

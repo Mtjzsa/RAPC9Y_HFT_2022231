@@ -34,5 +34,33 @@ namespace RAPC9Y_HFT_2022231.Models
         //    Id = int.Parse(split[0]);
         //    RegionName = split[1];
         //}
+
+        public class RegionInfo
+        {
+            public string Region { get; set; }
+            public double Year { get; set; }
+
+            public int Number { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                RegionInfo b = obj as RegionInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.Region == b.Region
+                        && this.Year == b.Year
+                        && this.Number == b.Number;
+                }
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.Region, this.Year, this.Number);
+            }
+        }
     }
 }

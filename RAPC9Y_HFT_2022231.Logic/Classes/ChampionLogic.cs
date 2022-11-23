@@ -126,11 +126,12 @@ namespace RAPC9Y_HFT_2022231.Logic
                    };
         }
 
-        public IEnumerable<ChampionInfo> ChampionsByRegion()
+        public IEnumerable<Regions.RegionInfo> ChampionsByRegion()
         {
             return from x in this.repo.ReadAll()
                    group x by x.Region.RegionName into g
-                   select new ChampionInfo()
+                   orderby g.Key
+                   select new Regions.RegionInfo()
                    {
                        Region = g.Key.ToString(),
                        Year = g.Average(t=>t.Release),
@@ -138,32 +139,6 @@ namespace RAPC9Y_HFT_2022231.Logic
                    };
         }
 
-        public class ChampionInfo
-        {
-            public string Region { get; set; }
-            public double Year { get; set; }
 
-            public int Number { get; set; }
-
-            public override bool Equals(object obj)
-            {
-                ChampionInfo b = obj as ChampionInfo;
-                if (b == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return this.Region == b.Region
-                        && this.Year ==b.Year
-                        && this.Number == b.Number;
-                }
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(this.Region, this.Year, this.Number);
-            }
-        }
     }
 }

@@ -16,6 +16,6 @@ namespace RAPC9Y_HFT_2022231.Logic
         IEnumerable<Champions> FemaleDemacianChamps();
         IEnumerable<Champions> SupportsWithOtherGender();
         IEnumerable<Champions> TopChampionsOrderByRelease();
-        IEnumerable<ChampionInfo> ChampionsByRegion();
+        IEnumerable<Regions.RegionInfo> ChampionsByRegion();
     }
 }
