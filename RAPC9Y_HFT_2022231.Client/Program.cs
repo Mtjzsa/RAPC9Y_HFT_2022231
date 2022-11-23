@@ -71,7 +71,7 @@ namespace RAPC9Y_HFT_2022231.Client
                 Console.Write($"New name [old: {first.Name}]: ");
                 string name = Console.ReadLine();
                 first.Name = name;
-                rest.Put(first, "chmapion");
+                rest.Put(first, "champion");
             }
             if (entity == "Lanes")
             {
