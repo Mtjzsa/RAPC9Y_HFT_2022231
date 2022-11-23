@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +28,7 @@ namespace RAPC9Y_HFT_2022231.Endpoint
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<LoLDbContext>();
+            services.AddTransient<LoLDbContext>();
 
             services.AddTransient<IRepository<Champions>, ChampionRepository>();
             services.AddTransient<IRepository<Lanes>, LaneRepository>();
@@ -59,6 +60,15 @@ namespace RAPC9Y_HFT_2022231.Endpoint
                 app.UseSwagger();
                 app.UseSwaggerUI(t=>t.SwaggerEndpoint("/swagger/v1/swagger.json", "RAPC9Y_HFT_202223.Endpoint v1"));
             }
+
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var exception = context.Features
+                        .Get<IExceptionHandlerPathFeature>()
+                        .Error;
+                var response = new { Msg = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
 
             app.UseRouting();
 
